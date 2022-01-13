@@ -6,7 +6,7 @@ Tools used:
 2. VM instance on GCP
 ------------
 Flow:
-1. The latest date (max_dt) in the local data is checked for incremental load
+1. The latest date (max_dt) in the local data is checked for incremental load. (Initial date has been set to 01-Jan-1980)
 2. TextdData is pulled in blocks of stream from the URL - https://www.amfiindia.com/spages/NAVAll.txt?t=11012022102943
 3. Then the fetched data later than the max_dt is filtered
 4. Null rows are removed
