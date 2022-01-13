@@ -32,7 +32,12 @@ print("Current max_date is:{0}".format(max_dt))
 begin=datetime.datetime.now()
 
 url = "https://www.amfiindia.com/spages/NAVAll.txt?t=11012022102943"
-fl_path=download_file(url)
+try:
+	fl_path=download_file(url)
+except Exception as expt:
+	print("URL fetch failed due to:")
+	print(expt)
+	quit(-1)
 df1 = spark.read.csv(fl_path, sep=";", header=True, inferSchema= True)
 df1=df1.withColumn("Date",F.to_date(df1.Date,"dd-MMM-yyyy"))
 
